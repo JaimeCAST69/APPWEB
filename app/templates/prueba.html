@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <input type="text" name="nombre" placeholder="ingrese nombre"/>
+        <input type="number" name="edad" placeholder="ingrese edad">
+        <button type="submit">Enviar...</button>
+    </form>
+    
+    {% if objeto %}
+
+    <!-- todo lo que este aqui se va a pintar -->
+
+    <h1>{{saludo}}</h1>
+    <h2>{{objeto.nombres}}</h2>
+    <p>{{objeto.descripcion}}</p>
+    {% endif %}
+
+
+    {% if personas %}
+
+        <ul>
+            {% for persona in personas %}
+                <li>{{persona.nombres}}</li>
+            {% endfor%}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

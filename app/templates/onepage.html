@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="col">
+            <div class="row">
+                <div class="col-6 mt-5">
+                    <h1>Bienvenido a mi OnePage</h1>
+                    <br>
+                    <p>Este sitio carga tarjetas de bootstrap dinamincamente</p>
+                    <br>
+                </div>
+                <div class="col-5 mt-5">
+                    <img class="img-fluid" alt="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTgwu3eQaZponGXujI8sFC0PFCeru77geMOg&s"/>
+                </div>
+            </div>
+            <div class="row mt-5" id="tarjetas">
+                <div class="card col-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Este es un titulo estático
+                        </h5>
+                        <p class="card-text">
+                            Este es un texto estático dentro de la card
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus doloremque illum ad similique dolores natus. Vero est voluptas dolores, aliquam consequatur recusandae sapiente mollitia beatae, aperiam aspernatur rem cupiditate?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadCards(title, text){
+            var card = document.createElement('div');
+            card.setAttribute('class','card col-4');
+
+            var body = document.createElement('div');
+            body.setAttribute('class','card-body');
+
+            var h5 = document.createElement('h5');
+            h5.setAttribute('class','card-title');
+            h5.innerHTML = title;
+
+            var p = document.createElement('p');
+            p.setAttribute('class','card-text');
+            p.innerHTML = text;
+
+            body.appendChild(h5);
+            body.appendChild(p);
+            card.appendChild(body);
+
+            document.getElementById('tarjetas').appendChild(card);
+        }
+
+        var i = 1;
+
+        window.addEventListener('scroll', () => {
+            if(window.scrollY + window.innerHeight >= document.body.offsetHeight -100){
+                for(let index = 0; index < 5; index++){
+                    if(i > 100){
+                        break;
+                    }
+                    var object = {
+                        title: 'Titulo dinámico de Card:' +i,
+                        text: 'Texto dinámico de Card:' +i
+                    }
+
+                    loadCards(object.title, object.text);
+                    i++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
